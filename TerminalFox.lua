@@ -1,4 +1,4 @@
-local player, gui
+local player, gui = ...
 local a = Instance.new("Frame")
 local b = Instance.new("TextBox")
 b.Text = "16"
