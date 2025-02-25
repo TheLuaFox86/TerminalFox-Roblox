@@ -1,6 +1,6 @@
 local player, gui
-local a = Instance.New("Frame")
-local b = Instance.New("TextBox")
+local a = Instance.new("Frame")
+local b = Instance.new("TextBox")
 b.Text = "16"
 b.FocusLost:Connect(function(EnterPressed)
     if EnterPressed then
