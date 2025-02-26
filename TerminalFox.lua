@@ -1,5 +1,5 @@
 local player, gui = ...
-local playerGui = player:FindFirstChild("PlayerGui")
+local playerGui = player.PlayerGui
 
 if not playerGui then return end
 
