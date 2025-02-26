@@ -73,7 +73,7 @@ inputBox.FocusLost:Connect(function(enterPressed)
         elseif command == "clear" then
             output.Text = ""
         elseif command == "time" then
-            printToTerminal("Current Time: " .. "000"
+            printToTerminal("Current Time: " .. "000")
         else
             printToTerminal("Unknown command: " .. command)
         end
