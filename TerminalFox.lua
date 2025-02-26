@@ -55,6 +55,7 @@ inputBox.TextSize = 16
 inputBox.ClearTextOnFocus = false
 inputBox.PlaceholderText = "Enter command..."
 inputBox.Parent = frame
+inputBox.text = ""
 
 -- Function to print output
 local function printToTerminal(text)
@@ -65,18 +66,18 @@ end
 -- Command Handling
 inputBox.FocusLost:Connect(function(enterPressed)
     if true then
-        local command = inputBox.Text:lower()
-        inputBox.Text = ""
+        local command = inputBox.Text
 
         if command == "help" then
             printToTerminal("Available commands:\n- help\n- clear\n- time")
         elseif command == "clear" then
             output.Text = ""
         elseif command == "time" then
-            printToTerminal("Current Time: " .. os.date("%X"))
+            printToTerminal("Current Time: " .. "000"
         else
             printToTerminal("Unknown command: " .. command)
         end
+        inputBox.Text = ""
     end
 end)
 
