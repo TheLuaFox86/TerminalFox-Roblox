@@ -74,7 +74,7 @@ button.PlaceholderText = "Enter"
 button.Parent = frame
 button.Text = ""
 -- Command Handling
-button.MouseButton1Click:Connect(FocusLost:Connect(function(enterPressed)
+button.MouseButton1Click:Connect(function(enterPressed)
     if true then
         local command = inputBox.Text
 
