@@ -1,6 +1,83 @@
 local player, gui = ...
-local a = Instance.new("Frame")
-local b = Instance.new("TextBox")
-b.Text = "16"
-a.Parent = gui
-b.Parent = a
+local playerGui = player:FindFirstChild("PlayerGui")
+
+if not playerGui then return end
+
+-- Create GUI elements
+local screenGui = Instance.new("ScreenGui")
+screenGui.Parent = playerGui
+
+local frame = Instance.new("Frame")
+frame.Size = UDim2.new(0, 500, 0, 300)
+frame.Position = UDim2.new(0.25, 0, 0.25, 0)
+frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+frame.BorderSizePixel = 0
+frame.Parent = screenGui
+frame.Active = true
+frame.Draggable = true
+
+local title = Instance.new("TextLabel")
+title.Size = UDim2.new(1, 0, 0, 30)
+title.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+title.Text = "Roblox Terminal"
+title.TextColor3 = Color3.fromRGB(255, 255, 255)
+title.Font = Enum.Font.SourceSansBold
+title.TextSize = 20
+title.Parent = frame
+
+local scrollFrame = Instance.new("ScrollingFrame")
+scrollFrame.Size = UDim2.new(1, 0, 1, -60)
+scrollFrame.Position = UDim2.new(0, 0, 0, 30)
+scrollFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+scrollFrame.CanvasSize = UDim2.new(0, 0, 5, 0)
+scrollFrame.BorderSizePixel = 0
+scrollFrame.Parent = frame
+
+local output = Instance.new("TextLabel")
+output.Size = UDim2.new(1, -10, 1, 0)
+output.Position = UDim2.new(0, 5, 0, 0)
+output.BackgroundTransparency = 1
+output.TextColor3 = Color3.fromRGB(0, 255, 0)
+output.Font = Enum.Font.Code
+output.TextSize = 16
+output.TextXAlignment = Enum.TextXAlignment.Left
+output.TextYAlignment = Enum.TextYAlignment.Top
+output.TextWrapped = true
+output.Text = ">> Welcome to Roblox Terminal\n>> Type 'help' for commands\n"
+output.Parent = scrollFrame
+
+local inputBox = Instance.new("TextBox")
+inputBox.Size = UDim2.new(1, 0, 0, 30)
+inputBox.Position = UDim2.new(0, 0, 1, -30)
+inputBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+inputBox.Font = Enum.Font.Code
+inputBox.TextSize = 16
+inputBox.ClearTextOnFocus = false
+inputBox.PlaceholderText = "Enter command..."
+inputBox.Parent = frame
+
+-- Function to print output
+local function printToTerminal(text)
+    output.Text = output.Text .. "\n>> " .. text
+    scrollFrame.CanvasSize = UDim2.new(0, 0, 0, output.TextBounds.Y + 10)
+end
+
+-- Command Handling
+inputBox.FocusLost:Connect(function(enterPressed)
+    if enterPressed then
+        local command = inputBox.Text:lower()
+        inputBox.Text = ""
+
+        if command == "help" then
+            printToTerminal("Available commands:\n- help\n- clear\n- time")
+        elseif command == "clear" then
+            output.Text = ""
+        elseif command == "time" then
+            printToTerminal("Current Time: " .. os.date("%X"))
+        else
+            printToTerminal("Unknown command: " .. command)
+        end
+    end
+end)
+
