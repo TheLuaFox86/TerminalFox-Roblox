@@ -46,7 +46,7 @@ output.Text = ">> Welcome to TerminalFox\n>> Type 'help' for commands\n"
 output.Parent = scrollFrame
 
 local inputBox = Instance.new("TextBox")
-inputBox.Size = UDim2.new(1, 0, 0, 25)
+inputBox.Size = UDim2.new(0, 490, 0, 30)
 inputBox.Position = UDim2.new(0, 0, 1, -30)
 inputBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -63,8 +63,8 @@ local function printToTerminal(text)
     scrollFrame.CanvasSize = UDim2.new(0, 0, 0, output.TextBounds.Y + 10)
 end
 local button = Instance.new("TextButton")
-button.Size = UDim2.new(0, 5, 0, 5)
-button.Position = UDim2.new(0, 5, 0, 5)
+button.Size = UDim2.new(0, 10, 0, 10)
+button.Position = UDim2.new(0, 490, 0, 490)
 button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 button.TextColor3 = Color3.fromRGB(255, 255, 255)
 button.Font = Enum.Font.Code
