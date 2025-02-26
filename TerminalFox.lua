@@ -46,7 +46,7 @@ output.Text = ">> Welcome to TerminalFox\n>> Type 'help' for commands\n"
 output.Parent = scrollFrame
 
 local inputBox = Instance.new("TextBox")
-inputBox.Size = UDim2.new(1, 0, 0, 30)
+inputBox.Size = UDim2.new(1, 0, 0, 25)
 inputBox.Position = UDim2.new(0, 0, 1, -30)
 inputBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -62,9 +62,19 @@ local function printToTerminal(text)
     output.Text = output.Text .. "\n>> " .. text
     scrollFrame.CanvasSize = UDim2.new(0, 0, 0, output.TextBounds.Y + 10)
 end
-
+local button = Instance.new("TextButton")
+button.Size = UDim2.new(1, 0, 0, 5)
+button.Position = UDim2.new(0, 0, 1, -5)
+button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+button.TextColor3 = Color3.fromRGB(255, 255, 255)
+button.Font = Enum.Font.Code
+button.TextSize = 16
+button.ClearTextOnFocus = false
+button.PlaceholderText = "Enter"
+button.Parent = frame
+button.Text = ""
 -- Command Handling
-inputBox.FocusLost:Connect(function(enterPressed)
+button.MouseButton1Click:Connect(FocusLost:Connect(function(enterPressed)
     if true then
         local command = inputBox.Text
 
