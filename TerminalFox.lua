@@ -55,7 +55,7 @@ inputBox.TextSize = 16
 inputBox.ClearTextOnFocus = false
 inputBox.PlaceholderText = "Enter command..."
 inputBox.Parent = frame
-inputBox.Text = ""
+inputBox.Text = "Enter Command"
 
 -- Function to print output
 local function printToTerminal(text)
@@ -85,7 +85,7 @@ button.MouseButton1Click:Connect(function(enterPressed)
         else
             printToTerminal("Unknown command: " .. command)
         end
-        inputBox.Text = ""
+        inputBox.Text = "Enter Command"
     end
 end)
 
