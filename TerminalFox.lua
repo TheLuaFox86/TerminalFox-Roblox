@@ -69,10 +69,8 @@ button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 button.TextColor3 = Color3.fromRGB(255, 255, 255)
 button.Font = Enum.Font.Code
 button.TextSize = 16
-button.ClearTextOnFocus = false
-button.PlaceholderText = "Enter"
 button.Parent = frame
-button.Text = ""
+button.Text = "Enter"
 -- Command Handling
 button.MouseButton1Click:Connect(function(enterPressed)
     if true then
