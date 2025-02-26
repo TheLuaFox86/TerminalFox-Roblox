@@ -55,7 +55,7 @@ inputBox.TextSize = 16
 inputBox.ClearTextOnFocus = false
 inputBox.PlaceholderText = "Enter command..."
 inputBox.Parent = frame
-inputBox.text = ""
+inputBox.Text = ""
 
 -- Function to print output
 local function printToTerminal(text)
