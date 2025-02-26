@@ -19,7 +19,7 @@ frame.Draggable = true
 local title = Instance.new("TextLabel")
 title.Size = UDim2.new(1, 0, 0, 30)
 title.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
-title.Text = "Roblox Terminal"
+title.Text = "TerminalFox"
 title.TextColor3 = Color3.fromRGB(255, 255, 255)
 title.Font = Enum.Font.SourceSansBold
 title.TextSize = 20
@@ -43,7 +43,7 @@ output.TextSize = 16
 output.TextXAlignment = Enum.TextXAlignment.Left
 output.TextYAlignment = Enum.TextYAlignment.Top
 output.TextWrapped = true
-output.Text = ">> Welcome to Roblox Terminal\n>> Type 'help' for commands\n"
+output.Text = ">> Welcome to TerminalFox\n>> Type 'help' for commands\n"
 output.Parent = scrollFrame
 
 local inputBox = Instance.new("TextBox")
@@ -65,7 +65,7 @@ end
 
 -- Command Handling
 inputBox.FocusLost:Connect(function(enterPressed)
-    if enterPressed then
+    if true then
         local command = inputBox.Text:lower()
         inputBox.Text = ""
 
