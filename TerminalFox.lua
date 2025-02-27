@@ -93,6 +93,8 @@ button.MouseButton1Click:Connect(function(enterPressed)
            player.Character.Humanoid.MaxHealth = tonumber(args[2])
         elseif command == "god" then
            player.Character.Humanoid.MaxHealth = 0
+        elseif command == "kill" then
+           player.Character.Humanoid.Health = -1
         else
             printToTerminal("Unknown command: " .. command)
         end
