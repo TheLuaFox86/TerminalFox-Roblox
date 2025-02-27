@@ -44,7 +44,7 @@ output.TextSize = 16
 output.TextXAlignment = Enum.TextXAlignment.Left
 output.TextYAlignment = Enum.TextYAlignment.Top
 output.TextWrapped = true
-output.Text = ">> Welcome to TerminalFox\n>> Type 'help' for commands\n"
+output.Text = ">> Welcome to TerminalFox\n>> Type 'help' for commands 'Exit' to close gui\n"
 output.Parent = scrollFrame
 
 local inputBox = Instance.new("TextBox")
@@ -87,6 +87,8 @@ button.MouseButton1Click:Connect(function(enterPressed)
             player.Character.Humanoid.WalkSpeed = tonumber(args[2])
         elseif command == "jump" then
             player.Character.Humanoid.JumpHeight = tonumber(args[2])
+        elseif command == "Exit" then
+           screenGui:Destroy()
         else
             printToTerminal("Unknown command: " .. command)
         end
