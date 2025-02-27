@@ -89,6 +89,10 @@ button.MouseButton1Click:Connect(function(enterPressed)
             player.Character.Humanoid.JumpHeight = tonumber(args[2])
         elseif command == "Exit" then
            screenGui:Destroy()
+        elseif command == "health" then
+           player.Character.Humanoid.MaxHealth = tonumber(args[2])
+        elseif command == "god" then
+           player.Character.Humanoid.MaxHealth = 0
         else
             printToTerminal("Unknown command: " .. command)
         end
