@@ -56,7 +56,7 @@ inputBox.TextSize = 16
 inputBox.ClearTextOnFocus = false
 inputBox.PlaceholderText = "Enter command..."
 inputBox.Parent = frame
-inputBox.Text = "Enter"
+inputBox.Text = ""
 
 -- Function to print output
 local function printToTerminal(text)
@@ -71,7 +71,7 @@ button.TextColor3 = Color3.fromRGB(255, 255, 255)
 button.Font = Enum.Font.Code
 button.TextSize = 16
 button.Parent = frame
-button.Text = ""
+button.Text = "Enter"
 -- Command Handling
 button.MouseButton1Click:Connect(function(enterPressed)
     if true then
