@@ -47,7 +47,7 @@ output.Text = ">> Welcome to TerminalFox\n>> Type 'help' for commands\n"
 output.Parent = scrollFrame
 
 local inputBox = Instance.new("TextBox")
-inputBox.Size = UDim2.new(0, 490, 0,10)
+inputBox.Size = UDim2.new(0, 400, 0,30)
 inputBox.Position = UDim2.new(0, 0, 1, -30)
 inputBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 inputBox.TextColor3 = Color3.fromRGB(255, 255, 255)
