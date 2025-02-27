@@ -71,22 +71,23 @@ button.TextColor3 = Color3.fromRGB(255, 255, 255)
 button.Font = Enum.Font.Code
 button.TextSize = 16
 button.Parent = frame
-button.Text = "Enter"
+button.Text = ""
 -- Command Handling
 button.MouseButton1Click:Connect(function(enterPressed)
     if true then
-        local command = inputBox.Text
+        local args = inputBox.Text:split(" ")
+        local command = args[1]
 
         if command == "help" then
-            printToTerminal("Available commands:\n- help\n- clear\n- time")
+            printToTerminal("Available commands:\n- help\n- clear\n- speed")
         elseif command == "clear" then
             output.Text = ""
-        elseif command == "time" then
-            printToTerminal("Current Time: " .. "000")
+        elseif command == "speed" then
+            player.Character.Humanoid.WalkSpeed = tonumber(args[2])
         else
             printToTerminal("Unknown command: " .. command)
         end
-        inputBox.Text = "Enter Command"
+        inputBox.Text = ""
     end
 end)
 
