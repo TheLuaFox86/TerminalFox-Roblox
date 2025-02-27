@@ -65,7 +65,7 @@ local function printToTerminal(text)
     scrollFrame.CanvasSize = UDim2.new(0, 0, 0, output.TextBounds.Y + 10)
 end
 local button = Instance.new("TextButton")
-button.Size = UDim2.new(0, 10, 0, 10)
+button.Size = UDim2.new(0, 100, 0, 30)
 button.Position = UDim2.new(0, 490, 0, 290)
 button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 button.TextColor3 = Color3.fromRGB(255, 255, 255)
