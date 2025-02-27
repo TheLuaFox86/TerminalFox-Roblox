@@ -79,13 +79,13 @@ button.MouseButton1Click:Connect(function(enterPressed)
         local command = args[1]
 
         if command == "help" then
-            printToTerminal("Available commands:\n- help\n- clear\n- speed\n sets player speed\n speed [Number]")
+            printToTerminal("Available commands:\n- help\n- clear\n- speed\n sets player speed\n speed [Number]\n-jump\n sets jump Height\n jump [meters: number]")
         elseif command == "clear" then
             output.Text = ""
         elseif command == "speed" then
             player.Character.Humanoid.WalkSpeed = tonumber(args[2])
         elseif command == "jump" then
-            player.Character.Humanoid.JumpPower = tonumber(args[2])
+            player.Character.Humanoid.JumpHeight = tonumber(args[2])
         else
             printToTerminal("Unknown command: " .. command)
         end
