@@ -1,3 +1,4 @@
+
 local player, gui = owner, Instance.new("ScreenGui")
 local playerGui = player.PlayerGui
 
@@ -65,7 +66,7 @@ local function printToTerminal(text)
 end
 local button = Instance.new("TextButton")
 button.Size = UDim2.new(0, 10, 0, 10)
-button.Position = UDim2.new(0, 0, 0, 0)
+button.Position = UDim2.new(0, 490, 0, 290)
 button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 button.TextColor3 = Color3.fromRGB(255, 255, 255)
 button.Font = Enum.Font.Code
