@@ -66,7 +66,7 @@ local function printToTerminal(text)
 end
 local button = Instance.new("TextButton")
 button.Size = UDim2.new(0, 100, 0, 30)
-button.Position = UDim2.new(0, 490, 0, 290)
+button.Position = UDim2.new(0, 400, 0, 200)
 button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 button.TextColor3 = Color3.fromRGB(255, 255, 255)
 button.Font = Enum.Font.Code
