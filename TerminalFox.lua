@@ -1,7 +1,15 @@
 
-local player, gui = ...
+local player, gui, repo = ...
 local playerGui = player.PlayerGui
+tf = {}
+tf.player = player
+tf.commands = {}
+--
+tf.commands = loadstring(game.HttpService:GetAsync(repo .. "cmds.lua"))()
 
+--
+tf.gui = {}
+tf.gui.obj = gui
 if not playerGui then return end
 
 -- Create GUI elements
@@ -63,6 +71,7 @@ local function printToTerminal(text)
     output.Text = output.Text .. "\n>> " .. text
     scrollFrame.CanvasSize = UDim2.new(0, 0, 0, output.TextBounds.Y + 10)
 end
+tf.print = printToTerminal
 local button = Instance.new("TextButton")
 button.Size = UDim2.new(0, 100, 0, 30)
 button.Position = UDim2.new(0, 400, 0, 270)
@@ -95,7 +104,7 @@ button.MouseButton1Click:Connect(function(enterPressed)
         elseif command == "kill" then
            player.Character.Humanoid.Health = -1
         else
-            printToTerminal("Unknown command: " .. command)
+            print(pcall(tf.commands[command], tf, args]))
         end
         inputBox.Text = ""
     end
