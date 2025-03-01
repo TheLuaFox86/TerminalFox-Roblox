@@ -1,7 +1,20 @@
-
-local player, gui = game.Players.LocalPlayer, Instance.new("ScreenGui")
+return function()
+--Adaption 
+local g = Instance.new("ScreenGui")
+g.name = tostring(math.random(9999999)
+g.Parent = game.Players.LocalPlayer.PlayerGui
+--end
+local player, gui = game.Players.LocalPlayer, g
 local playerGui = player.PlayerGui
+tf = {}
+tf.player = player
+tf.commands = require(script.Parent.CMDS)
+--[[
+tf.commands = loadstring(game.HttpService:GetAsync(repo .. "cmds.lua"))()
 
+--]]
+tf.gui = {}
+tf.gui.obj = gui
 if not playerGui then return end
 
 -- Create GUI elements
@@ -63,6 +76,7 @@ local function printToTerminal(text)
     output.Text = output.Text .. "\n>> " .. text
     scrollFrame.CanvasSize = UDim2.new(0, 0, 0, output.TextBounds.Y + 10)
 end
+tf.print = printToTerminal
 local button = Instance.new("TextButton")
 button.Size = UDim2.new(0, 100, 0, 30)
 button.Position = UDim2.new(0, 400, 0, 270)
@@ -91,13 +105,16 @@ button.MouseButton1Click:Connect(function(enterPressed)
         elseif command == "health" then
            player.Character.Humanoid.MaxHealth = tonumber(args[2])
         elseif command == "god" then
-           player.Character.Humanoid.MaxHealth = 0
+           player.Character.Humanoid.MaxHealth = 999999999999
+            player.Character.Humanoid.Health = 999999999999
         elseif command == "kill" then
-           player.Character.Humanoid.Health = -1
+           player.Character.Humanoid.Health = 0
         else
-            printToTerminal("Unknown command: " .. command)
+            print(pcall(tf.commands[command], tf, args]))
         end
         inputBox.Text = ""
     end
-end)
+            end)
 
+
+    end
