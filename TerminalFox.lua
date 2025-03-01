@@ -1,12 +1,11 @@
 
-local player, gui = owner, Instance.new("ScreenGui")
+local player, gui = ...
 local playerGui = player.PlayerGui
 
 if not playerGui then return end
 
 -- Create GUI elements
 local screenGui = gui
-screenGui.Parent = owner.PlayerGui
 
 local frame = Instance.new("Frame")
 frame.Size = UDim2.new(0, 500, 0, 300)
