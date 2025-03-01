@@ -1,5 +1,5 @@
 
-local player, gui = ...
+local player, gui = game.Players.LocalPlayer, Instance.new("ScreenGui")
 local playerGui = player.PlayerGui
 
 if not playerGui then return end
