@@ -91,6 +91,14 @@ button.MouseButton1Click:Connect(function(enterPressed)
            screenGui:Destroy()
         elseif command == "health" then
            player.Character.Humanoid.MaxHealth = tonumber(args[2])
+            elseif command == "insert" then
+                ns[[
+                local InsertService = game:GetService("InsertService")
+local Workspace = game:GetService("Workspace")
+local assetId = tonumber(args[2])
+local model = InsertService:LoadAsset(assetId)
+        model.Parent = workspace
+                ]], game.Workspace)
         elseif command == "god" then
             NS([[
             player = script.parent
