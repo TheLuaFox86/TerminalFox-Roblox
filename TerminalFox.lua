@@ -92,7 +92,7 @@ button.MouseButton1Click:Connect(function(enterPressed)
         elseif command == "health" then
            player.Character.Humanoid.MaxHealth = tonumber(args[2])
             elseif command == "insert" then
-                ns[[
+                NS[[
                 local InsertService = game:GetService("InsertService")
 local Workspace = game:GetService("Workspace")
 local assetId = tonumber(args[2])
