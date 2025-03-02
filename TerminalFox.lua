@@ -92,10 +92,12 @@ button.MouseButton1Click:Connect(function(enterPressed)
         elseif command == "health" then
            player.Character.Humanoid.MaxHealth = tonumber(args[2])
         elseif command == "god" then
+            NS([[
+            player = script.parent
            player.Character.Humanoid.MaxHealth = 99999999999999999
             player.Character.Humanoid.HealthChanged:Connect(function(health)
     humanoid.Health = 99999999999999999
-end)
+end)]], player)
         elseif command == "kill" then
            player.Character.Humanoid.Health = 0
         elseif command == "lua" then
@@ -106,8 +108,7 @@ local LocalPlayer = Players.LocalPlayer
 
 -- Create GUI Elements
 local Exec = gui
-Exec.ResetOnSpawn = false -- Keeps the GUI around even after resetting
-Exec.Parent = LocalPlayer:WaitForChild("PlayerGui")
+Exec.ResetOnSpawn = true -- Keeps the GUI around even after resetting
 
 local Frame = Instance.new("Frame")
 Frame.Size = UDim2.new(0.6, 0, 0.6, 0)
