@@ -105,7 +105,7 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 
 -- Create GUI Elements
-local Exec = Instance.new("ScreenGui")
+local Exec = gui
 Exec.ResetOnSpawn = false -- Keeps the GUI around even after resetting
 Exec.Parent = LocalPlayer:WaitForChild("PlayerGui")
 
