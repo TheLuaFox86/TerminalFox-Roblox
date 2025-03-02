@@ -97,7 +97,99 @@ button.MouseButton1Click:Connect(function(enterPressed)
     humanoid.Health = 99999999999999999
 end)
         elseif command == "kill" then
-           player.Character.Humanoid.Health = -1
+           player.Character.Humanoid.Health = 0
+        elseif command == "lua" then
+                -- Put this in StarterGui inside a ScreenGui as a LocalScript.
+
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+
+-- Create GUI Elements
+local Exec = Instance.new("ScreenGui")
+Exec.ResetOnSpawn = false -- Keeps the GUI around even after resetting
+Exec.Parent = LocalPlayer:WaitForChild("PlayerGui")
+
+local Frame = Instance.new("Frame")
+Frame.Size = UDim2.new(0.6, 0, 0.6, 0)
+Frame.Position = UDim2.new(0.2, 0, 0.2, 0)
+Frame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Frame.Draggable = true
+Frame.Active = true
+Frame.Parent = Exec
+
+-- Collapse Button
+local CollapseButton = Instance.new("TextButton")
+CollapseButton.Size = UDim2.new(0.15, 0, 0.1, 0)
+CollapseButton.Position = UDim2.new(0.025, 0, 0.025, 0)
+CollapseButton.Text = "-"
+CollapseButton.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+CollapseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+CollapseButton.Font = Enum.Font.GothamBold
+CollapseButton.TextScaled = true
+CollapseButton.Parent = Frame
+
+-- Code Container (holds TextBox + Run Button, so we can hide both easily)
+local CodeContainer = Instance.new("Frame")
+CodeContainer.Size = UDim2.new(1, 0, 0.85, 0)
+CodeContainer.Position = UDim2.new(0, 0, 0.15, 0)
+CodeContainer.BackgroundTransparency = 1
+CodeContainer.Parent = Frame
+
+-- TextBox
+local TextBox = Instance.new("TextBox")
+TextBox.Size = UDim2.new(0.9, 0, 0.7, 0)
+TextBox.Position = UDim2.new(0.05, 0, 0.05, 0)
+TextBox.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+TextBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextBox.Font = Enum.Font.Code
+TextBox.TextWrapped = true
+TextBox.MultiLine = true
+TextBox.Text = "-- Type Lua code here"
+TextBox.Parent = CodeContainer
+
+-- Run Button
+local RunButton = Instance.new("TextButton")
+RunButton.Size = UDim2.new(0.4, 0, 0.15, 0)
+RunButton.Position = UDim2.new(0.3, 0, 0.8, 0)
+RunButton.Text = "Run Code"
+RunButton.BackgroundColor3 = Color3.fromRGB(0, 200, 0)
+RunButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+RunButton.Font = Enum.Font.GothamBold
+RunButton.TextScaled = true
+RunButton.Parent = CodeContainer
+
+-- Collapse/Expand Logic
+local isCollapsed = false
+local originalSize = Frame.Size
+
+CollapseButton.MouseButton1Click:Connect(function()
+    isCollapsed = not isCollapsed
+    
+    if isCollapsed then
+        Frame.Size = UDim2.new(originalSize.X.Scale, 0, 0.1, 0)
+        CollapseButton.Text = "+"
+        CodeContainer.Visible = false
+    else
+        Frame.Size = originalSize
+        CollapseButton.Text = "-"
+        CodeContainer.Visible = true
+    end
+end)
+
+-- Run Button Functionality
+RunButton.MouseButton1Click:Connect(function()
+    local code = TextBox.Text
+
+    local func, err = loadstring(code)
+    if func then
+        local success, runtimeErr = pcall(func)
+        if not success then
+            warn("Runtime error: " .. tostring(runtimeErr))
+        end
+    else
+        warn("Compile error: " .. tostring(err))
+    end
+end)
         else
             printToTerminal("Unknown command: " .. command)
         end
